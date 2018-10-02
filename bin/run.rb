@@ -58,7 +58,6 @@ def saved_articles(user)
   puts "Here are your saved articles:"
 
 # Getting articles
-  binding.pry
   articles = user.articles
   return puts "You have no saved articles" if !articles.count
   articles = user.articles

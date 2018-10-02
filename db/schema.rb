@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_140420) do
     t.integer "topic_id"
   end
 
-  create_table "saves", force: :cascade do |t|
+  create_table "guardados", force: :cascade do |t|
     t.integer "user_id"
     t.integer "article_id"
   end
