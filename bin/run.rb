@@ -29,7 +29,7 @@ def run
     case response.downcase
 
     when "saved articles"
-      puts "saved article method here"
+      saved_articles(user)
     when "topics"
       puts "topics moethod here"
     when 'exit'
@@ -50,5 +50,37 @@ def store_or_get_name(response)
   user = User.find_by(first_name: response[0], last_name: response[1])
   user ? (return user) : (User.create(first_name: response[0], last_name: response[1]))
 end
+
+def saved_articles(user)
+  puts "Here are your saved articles:"
+# Getting articles
+  binding.pry
+  articles = user.articles
+  return puts "You have no saved articles" if !articles.count
+# Displaying articles
+  articles.each_with_index do |article, i|
+    puts "#{i + 1}. #{article.name}"
+  end
+# Options going forward
+  loop do
+    puts "Please select article by number, or back"
+    response = gets.chomp
+    return if response.downcase == 'back'
+    if response.to_i > 0 && response.to_i < articles.count
+      puts "You have selected an article, need selected article method"
+      break
+    else
+      puts "Your input was invalid"
+    end
+  end
+
+end
+
+def topics
+
+end
+
+
+
 
 run
