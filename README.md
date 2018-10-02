@@ -5,7 +5,6 @@
 1. Pull multiple articles form outlets (These will change based on usability of APIs)
   - Reddit
 
-
 2. Filter by topics, i.e. languages
 
 3. Can join as a user, and store favorite articles
