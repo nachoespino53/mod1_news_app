@@ -3,10 +3,8 @@
 ### User Stories
 
 1. Pull multiple articles form outlets (These will change based on usability of APIs)
-  - Meidum
   - Reddit
-  - Stack Overflow
-  - Tech Crunch
+
 
 2. Filter by topics, i.e. languages
 

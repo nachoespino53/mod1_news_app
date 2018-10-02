@@ -1,5 +1,4 @@
 require_relative '../config/environment'
 
 
-
-puts "HELLO WORLD"
+puts "Welcome, please tell us your name"
