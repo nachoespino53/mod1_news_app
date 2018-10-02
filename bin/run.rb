@@ -3,46 +3,28 @@ require 'pry'
 
 def run
   loop do
-    ### Beginning of our program
+### Beginning of our program
     response = welcome
     case response
     when 'exit'
       puts "Goodbye"
       break
     else
-      ### Now I want to check if it's a valid name
-        user = nil
-        loop do
-          if response.split.count == 2
-            user = store_or_get_name(response)
-            break
-          else
-            puts "Please enter a valid name:"
-            response = gets.chomp
-          end
-        end
-      ### After the user has been retrieved or created, now give the users some options
-        puts "Welcome #{user.first_name}"
+### Now I want to check if it's a valid name and store
+      user = valid_name?(response)
+### After the user has been retrieved or created, now give the users some options
+      puts "Welcome #{user.first_name}\n"
 
-        loop do
-          puts "Please select from the following:"
-          puts "- Saved Articles \n- Topics"
-          response = gets.chomp
-
-          case response.downcase
-          when "saved articles"
-            saved_articles(user)
-          when "topics"
-            topics
-          when 'exit'
-            puts "Goodbye"
-            break
-          else
-            "Invalid Input"
-          end
-        end
+      loop do
+        puts "Please select from the following:\n- Saved Articles \n- Topics"
+        response = gets.chomp
+        response = response.downcase
+        saved_articles(user) if "saved_articles" == response
+        topics if response == "topics"
+        break if response == 'exit'
       end
     end
+  end
 end
 
 
@@ -50,25 +32,25 @@ end
 ### Methods
 
 def welcome
-  puts "Welcome to our News App"
-  puts "Please tell us your first and last name:"
+  puts "Welcome to our News App\n\nPlease tell us your first and last name:"
   gets.chomp
 end
 
-
-#
-# def valid_name?
-#   return puts "Goodbye" if response.downcase == 'exit'
-#   user = nil
-#   loop do
-#     if response.split.count == 2
-#       user = store_or_get_name(response)
-#       break
-#     else
-#       puts "Please enter a valid name:"
-#       response = gets.chomp
-#     end
-# end
+def valid_name?(response)
+# This method will take a response loop until the user gives a first and last name.
+# Once the user gives a valid, name it will return that user
+  user = nil
+  loop do
+    if response.split.count == 2
+      user = store_or_get_name(response)
+      break
+    else
+      puts "Please enter a valid name:"
+      response = gets.chomp
+    end
+  end
+ user
+end
 
 def store_or_get_name(response)
   response = response.split
