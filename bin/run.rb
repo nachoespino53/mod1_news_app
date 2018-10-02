@@ -22,12 +22,13 @@ def run
   end
 ### After the user has been retrieved or created, now give the users some options
   puts "Welcome #{user.first_name}"
+
   loop do
     puts "Please select from the following:"
     puts "- Saved Articles \n- Topics"
     response = gets.chomp
-    case response.downcase
 
+    case response.downcase
     when "saved articles"
       saved_articles(user)
     when "topics"
@@ -38,6 +39,7 @@ def run
     else
       "Invalid Input"
     end
+
   end
 
 end
@@ -51,20 +53,22 @@ def store_or_get_name(response)
   user ? (return user) : (User.create(first_name: response[0], last_name: response[1]))
 end
 
+
 def saved_articles(user)
   puts "Here are your saved articles:"
+
 # Getting articles
-<<<<<<< HEAD
   binding.pry
   articles = user.articles
   return puts "You have no saved articles" if !articles.count
-=======
   articles = user.articles
->>>>>>> Ignacio
+
 # Displaying articles
   articles.each_with_index do |article, i|
     puts "#{i + 1}. #{article.name}"
   end
+
+
 # Options going forward
   loop do
     puts "Please select article by number, or back"
