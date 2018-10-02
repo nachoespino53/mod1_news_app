@@ -7,7 +7,7 @@ def run
   response = gets.chomp
 
   # Now I want to check if it's a valid name, or the input is "exit"
-  return if response.downcase == 'exit'
+  return puts "Goodbye" if response.downcase == 'exit'
   user = nil
   loop do
     if response.split.count == 2
@@ -18,6 +18,10 @@ def run
       response = gets.chomp
     end
   end
+### After the user has been retrieved or created, now give the users some options
+puts "Welcome #{user.first_name}"
+puts "Please select from the following:"
+puts "- Saved Articles \n- Topics"
 end
 
 
