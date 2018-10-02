@@ -20,5 +20,5 @@ end
 class ServerException < StandardError
   def initialize(json)
     puts json["message"]
-  end 
+  end
 end
