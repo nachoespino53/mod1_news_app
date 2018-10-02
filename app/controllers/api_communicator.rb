@@ -12,15 +12,18 @@ def headlines
 end
 
 #Request Call
-url = 'https://newsapi.org/v2/everything?'\
+
+def get_javascript_articles
+  url = 'https://newsapi.org/v2/everything?'\
       'q=Javascript&'\
       'from=2018-10-02&'\
       'sortBy=popularity&'\
       'apiKey=a9bec172fc834808922ae745dff0d340'
 
-req = open(url)
-response_body = req.read
-puts response_body
+      req = open(url)
+      response_body = req.read
+      return response_body
+end
 
 binding.pry
 0
