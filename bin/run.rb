@@ -32,7 +32,7 @@ def run
     when "saved articles"
       saved_articles(user)
     when "topics"
-      puts "topics moethod here"
+      topics
     when 'exit'
       puts "Goodbye"
       break
@@ -73,7 +73,7 @@ def saved_articles(user)
     puts "Please select article by number, or back"
     response = gets.chomp
     return if response.downcase == 'back'
-    if response.to_i > 0 && response.to_i < articles.count
+    if response.to_i > 0 && response.to_i <= articles.count
       puts "You have selected an article, need selected article method"
       break
     else
@@ -84,7 +84,18 @@ def saved_articles(user)
 end
 
 def topics
-
+  puts 'Please select one of the topics:'
+  Topic.all.each_with_index do |topic, i|
+    puts "#{i + 1}. #{topic.name}"
+  end
+  response = gets.chomp
+  if response.to_i > 0 && response.to_i <= Topic.all.count
+    Topic.find(response).articles.each do |article|
+      puts "#{article.name}"
+    end
+  else
+    puts "Input invalid"
+  end
 end
 
 
