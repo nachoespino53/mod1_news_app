@@ -6,12 +6,12 @@ require 'open-uri'
 
 @news_api = News.new("a9bec172fc834808922ae745dff0d340")
 
-# top headlines
+# Tech Crunch Headlines
 def headlines
   @news_api.get_top_headlines(sources: "TechCrunch")
 end
 
-#request call
+#Request Call
 url = 'https://newsapi.org/v2/everything?'\
       'q=Javascript&'\
       'from=2018-10-02&'\
