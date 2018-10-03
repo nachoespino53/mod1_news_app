@@ -1,4 +1,8 @@
 require 'bundler'
+require 'news-api'
+require 'json'
+require 'pry'
+require 'open-uri'
 Bundler.require
 require_all 'app'
 

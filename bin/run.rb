@@ -88,13 +88,17 @@ end
 
 def topics
   puts 'Please select one of the topics:'
+# Displays all topics
   Topic.all.each_with_index do |topic, i|
     puts "#{i + 1}. #{topic.name}"
   end
   response = gets.chomp
+
+# Gets and displays specific topic
+
   if response.to_i > 0 && response.to_i <= Topic.all.count
-    Topic.find(response).articles.each do |article|
-      puts "#{article.name}"
+    Topic.find(response).articles.each_with_index do |article, i|
+      puts "#{i + 1}. #{article.title}"
     end
   else
     puts "Input invalid"

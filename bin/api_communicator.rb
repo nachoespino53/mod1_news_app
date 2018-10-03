@@ -1,7 +1,4 @@
-require 'news-api'
-require 'json'
-require 'pry'
-require 'open-uri'
+require_relative '../config/environment'
 
 
 @news_api = News.new("a9bec172fc834808922ae745dff0d340")
@@ -26,7 +23,7 @@ end
 
 def get_ruby_articles
   url = 'https://newsapi.org/v2/everything?'\
-      'q=Ruby&'\
+      'q=Ruby%20on%20Rails&'\
       'from=2018-10-02&'\
       'sortBy=popularity&'\
       'apiKey=a9bec172fc834808922ae745dff0d340'
@@ -48,7 +45,6 @@ def get_sql_articles
       return response_body
 end
 
-
-
+google = headlines
 binding.pry
 0
