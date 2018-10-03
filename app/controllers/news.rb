@@ -11,10 +11,12 @@ class News
   VERSION = 'v2'
   BASE_URL = 'https://newsapi.org/' + VERSION + '/'
 
+#initialize with the api key, so creating an instance for the News
   def initialize(api_key)
     @api_key = api_key
   end
 
+#getting headlines
   def get_top_headlines(**args)
     endpoint = 'top-headlines'
     return _get_everything(endpoint, **args)
@@ -25,6 +27,8 @@ class News
     return _get_everything(endpoint, **args)
   end
 
+
+#make request for sources
   def get_sources(**args)
     endpoint = 'sources'
     request = _make_request(endpoint, **args)
@@ -45,7 +49,7 @@ class News
 
 
   private
-
+#private methods
   def _make_request(endpoint, **queries)
           params = eval(queries.inspect)
           uri = URI(_make_request_string(endpoint, params))
@@ -90,5 +94,4 @@ class News
           end
           return data
       end
-
 end
