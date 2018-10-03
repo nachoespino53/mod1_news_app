@@ -21,6 +21,18 @@ def get_javascript_articles
       return response_body
 end
 
+def get_html_articles
+  url = 'https://newsapi.org/v2/everything?'\
+      'q=HTML%20CSS&'\
+      'from=2018-10-02&'\
+      'sortBy=popularity&'\
+      'apiKey=a9bec172fc834808922ae745dff0d340'
+
+      req = open(url)
+      response_body = req.read
+      return response_body
+end
+
 def get_ruby_articles
   url = 'https://newsapi.org/v2/everything?'\
       'q=Ruby%20on%20Rails&'\

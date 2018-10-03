@@ -28,4 +28,11 @@ class Merge
       Article.create(title: article["title"], url: article["url"], topic_id: 1)
     end
   end
+
+  def self.html
+    html_articles = JSON.parse(get_html_articles)
+    html_articles["articles"].each do |article|
+      Article.create(title: article["title"], url: article["url"], topic_id: 3)
+    end
+  end
 end

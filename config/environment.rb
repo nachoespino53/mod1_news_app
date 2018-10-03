@@ -3,6 +3,7 @@ require 'news-api'
 require 'json'
 require 'pry'
 require 'open-uri'
+require 'launchy'
 Bundler.require
 require_all 'app'
 
