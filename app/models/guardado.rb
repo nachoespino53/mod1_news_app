@@ -1,4 +1,4 @@
-class Save < ActiveRecord::Base
+class Guardado < ActiveRecord::Base
   belongs_to :user
   belongs_to :article
 end
