@@ -16,10 +16,10 @@ def run
       puts "Welcome #{user.first_name}\n"
 
       loop do
-        puts "Please select from the following:\n- Saved Articles \n- Topics"
+        puts "Please select from the following:\n- Saved Articles \n- Topics\n\n"
         response = gets.chomp
         response = response.downcase
-        saved_articles(user) if "saved_articles" == response
+        saved_articles(user) if "saved articles" == response
         topics if response == "topics"
         break if response == 'exit'
       end
@@ -27,12 +27,10 @@ def run
   end
 end
 
-
-
 ### Methods
 
 def welcome
-  puts "Welcome to our News App\n\nPlease tell us your first and last name:"
+  puts "\nWelcome to our News App\n\nPlease tell us your first and last name:"
   gets.chomp
 end
 
@@ -60,7 +58,7 @@ end
 
 
 def saved_articles(user)
-  puts "Here are your saved articles:"
+  puts "Here are your saved articles:\n"
 
 # Getting articles
   articles = user.articles
