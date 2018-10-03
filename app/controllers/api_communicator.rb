@@ -48,6 +48,15 @@ def get_sql_articles
       return response_body
 end
 
+def sqlheadlines
+    sql_articles = JSON.parse(get_sql_articles)
+
+    sql_articles["articles"].each do |article|
+      Article.new(title: article["title"], url: article["url"], topic_id: 4)
+
+end
+end
+
 
 
 binding.pry
