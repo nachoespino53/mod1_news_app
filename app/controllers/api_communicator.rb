@@ -26,7 +26,7 @@ end
 
 def get_ruby_articles
   url = 'https://newsapi.org/v2/everything?'\
-      'q=Ruby&'\
+      'q=Ruby%20on%20Rails&'\
       'from=2018-10-02&'\
       'sortBy=popularity&'\
       'apiKey=a9bec172fc834808922ae745dff0d340'
@@ -48,15 +48,25 @@ def get_sql_articles
       return response_body
 end
 
-def sqlheadlines
-    sql_articles = JSON.parse(get_sql_articles)
 
-    sql_articles["articles"].each do |article|
-      Article.new(title: article["title"], url: article["url"], topic_id: 4)
+  def theheadlines
+    headlines.collect do |article|
+      article.title
+    end
+  end
 
-end
-end
 
+  def get_html_articles
+    url = 'https://newsapi.org/v2/everything?'\
+        'q=HTML%20CSS&'\
+        'from=2018-10-02&'\
+        'sortBy=popularity&'\
+        'apiKey=a9bec172fc834808922ae745dff0d340'
+
+        req = open(url)
+        response_body = req.read
+        return response_body
+  end
 
 
 binding.pry
