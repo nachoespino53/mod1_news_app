@@ -1,10 +1,10 @@
 require 'json'
-require 'pry'
-
-
-require_relative './api_communicator'
-require_relative './news'
-require_relative '../config/environment.rb'
+# require 'pry'
+#
+#
+# require_relative './api_communicator'
+# require_relative './news'
+# # require_relative '../config/environment.rb'
 
 
 class Merge

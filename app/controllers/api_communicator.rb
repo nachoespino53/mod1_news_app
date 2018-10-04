@@ -67,7 +67,3 @@ end
         response_body = req.read
         return response_body
   end
-
-
-binding.pry
-0
