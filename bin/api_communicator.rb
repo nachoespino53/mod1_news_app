@@ -57,28 +57,6 @@ def get_sql_articles
       return response_body
 end
 
-<<<<<<< HEAD:app/controllers/api_communicator.rb
-
-  def theheadlines
-    headlines.collect do |article|
-      article.title
-    end
-  end
-
-
-  def get_html_articles
-    url = 'https://newsapi.org/v2/everything?'\
-        'q=HTML%20CSS&'\
-        'from=2018-10-02&'\
-        'sortBy=popularity&'\
-        'apiKey=a9bec172fc834808922ae745dff0d340'
-
-        req = open(url)
-        response_body = req.read
-        return response_body
-  end
-=======
 google = headlines
 binding.pry
 0
->>>>>>> Master:bin/api_communicator.rb

@@ -66,10 +66,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-<<<<<<< HEAD
-=======
   launchy
->>>>>>> Master
   news-api
   pry
   require_all

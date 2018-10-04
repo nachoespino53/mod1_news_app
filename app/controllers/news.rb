@@ -2,8 +2,6 @@ require 'net/http'
 require 'json'
 require 'pry'
 
-
-
 class News
   VERSION = 'v2'
   BASE_URL = 'https://newsapi.org/' + VERSION + '/'

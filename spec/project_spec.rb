@@ -9,10 +9,6 @@ describe '#run' do
 
   end
 end
-<<<<<<< HEAD
-#Failure/Error: require_relative '../config/environment.rb'
-=======
->>>>>>> Master
 
 # "should return topics if user chooses topics"
 #
