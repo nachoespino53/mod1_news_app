@@ -4,24 +4,24 @@ require 'pry'
 def run
   loop do
 ### Beginning of our program
-    response = welcome
-    case response
-    when 'exit'
-      puts "Goodbye"
-      break
-    else
+      response = welcome
+      case response
+      when 'exit'
+        puts "Goodbye"
+        break
+      else
 ### Now I want to check if it's a valid name and store
       user = valid_name?(response)
 ### After the user has been retrieved or created, now give the users some options
-      puts "Welcome #{user.first_name}\n"
+      puts "Welcome #{user.first_name},\n"
 
       loop do
-        puts "Please select from the following:\n- Saved Articles \n- Topics\n\n"
+        puts "Please select from the following:\n1. Saved Articles \n2. Topics\n3. Exit\n\n"
         response = gets.chomp
         response = response.downcase
-        saved_articles(user) if "saved articles" == response
-        topics if response == "topics"
-        break if response == 'exit'
+        saved_articles(user) if "saved articles" == response || "1" == response
+        topics(user) if response == "topics" || "2" == response
+        break if response == 'exit' || "3" == response
       end
     end
   end
@@ -30,7 +30,7 @@ end
 ### Methods
 
 def welcome
-  puts "\nWelcome to our News App\n\nPlease tell us your first and last name:"
+  puts "\nWelcome to the Tech News App\n\nPlease tell us your first and last name:"
   gets.chomp
 end
 
@@ -50,49 +50,44 @@ def valid_name?(response)
  user
 end
 
-def store_or_get_name(response)
-  response = response.split
-  user = User.find_by(first_name: response[0], last_name: response[1])
-  user ? (return user) : (User.create(first_name: response[0], last_name: response[1]))
-end
 
 
 def saved_articles(user)
-  puts "Here are your saved articles:\n"
 
 # Getting articles
-  articles = user.articles
-  return puts "You have no saved articles" if !articles.count
-  articles = user.articles
+  user_articles = user.articles
+# Returns that there are no articles
+  return puts "You have no saved articles\n\n" if user_articles.empty?
+  puts "Here are your saved articles:\n"
 
 # Displaying articles
-  articles.each_with_index do |article, i|
-    puts "#{i + 1}. #{article.name}"
+  user_articles.each_with_index do |article, i|
+    puts "#{i + 1}. #{article.title}"
   end
-
 
 # Options going forward
   loop do
-    puts "Please select article by number, or back"
+    puts "Please select article by number, delete #, or back"
     response = gets.chomp
     return if response.downcase == 'back'
-    if response.to_i > 0 && response.to_i <= articles.count
-      puts "You have selected an article, need selected article method"
+    if response.to_i > 0 && response.to_i <= user_articles.count
+      open_article(user_articles[response.to_i - 1].id)
       break
+    elsif response.downcase.split[0] == "delete" && response.downcase.split[1].to_i != 0
+      delete_guardado(user_articles[response.downcase.split[1].to_i - 1], user)
     else
       puts "Your input was invalid"
     end
   end
-
 end
 
-def topics
-  puts 'Please select one of the topics:'
+def topics(user)
 # Displays all topics
   Topic.all.each_with_index do |topic, i|
     puts "#{i + 1}. #{topic.name}"
   end
   response = gets.chomp
+  puts "\n"
 
 # Gets and displays specific topic
   articles = []
@@ -105,10 +100,43 @@ def topics
     puts "Input invalid"
   end
 
-  response = gets.chomp
-# open
-# binding.pry
-  Launchy.open(articles[response.to_i + 1].url)
+#This will give options to open, back, or save
+  loop do
+    puts "Please select article by number, save #, or back"
+    response = gets.chomp
+    return if response.downcase == 'back'
+    if response.to_i > 0 && response.to_i <= articles.count
+      open_article(articles[response.to_i - 1].id)
+      break
+    elsif response.downcase.split[0] == "save" && response.downcase.split[1].to_i != 0
+      save_article(articles[response.downcase.split[1].to_i - 1].id, user.id)
+    else
+      puts "Your input was invalid"
+    end
+  end
+end
+
+
+
+#### Methods methods also probably called the module
+
+
+def open_article(article_id)
+  Launchy.open(Article.find(article_id).url)
+end
+
+def save_article(article, user)
+  Guardado.create(user_id: user, article_id: article)
+end
+
+def delete_guardado(article, user)
+  Guardado.find_by(user_id: user, article_id: article).destroy
+end
+
+def store_or_get_name(response)
+  response = response.split
+  user = User.find_by(first_name: response[0].capitalize, last_name: response[1].capitalize)
+  user ? (return user) : (User.create(first_name: response[0].capitalize, last_name: response[1].capitalize))
 end
 
 run
