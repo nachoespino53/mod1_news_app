@@ -3,7 +3,6 @@
 ### User Stories
 
 1. Pull multiple articles form outlets (These will change based on usability of APIs)
-  - Reddit
 
 2. Filter by topics, i.e. languages
 
@@ -13,9 +12,10 @@
 
 
 ### API
+NEWS-API
+https://github.com/olegmikhnovich/News-API-ruby
 
 1. Medium
-https://github.com/Medium/medium-api-docs
 
 2. Stack Overflow
 
@@ -34,10 +34,10 @@ https://github.com/Medium/medium-api-docs
 
 "Select your topic"
 - Ruby
-- ActiveRecord
+- HTML
 - JavaScript
-- Rails
 - SQL
+- Headlines
 
 
 Return material from all sources on that topic

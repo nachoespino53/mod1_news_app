@@ -88,17 +88,27 @@ end
 
 def topics
   puts 'Please select one of the topics:'
+# Displays all topics
   Topic.all.each_with_index do |topic, i|
     puts "#{i + 1}. #{topic.name}"
   end
   response = gets.chomp
+
+# Gets and displays specific topic
+  articles = []
   if response.to_i > 0 && response.to_i <= Topic.all.count
-    Topic.find(response).articles.each do |article|
-      puts "#{article.name}"
+    articles = Topic.find(response).articles
+    Topic.find(response).articles.each_with_index do |article, i|
+      puts "#{i + 1}. #{article.title}"
     end
   else
     puts "Input invalid"
   end
+
+  response = gets.chomp
+# open
+# binding.pry
+  Launchy.open(articles[response.to_i + 1].url)
 end
 
 run

@@ -2,10 +2,7 @@ require 'net/http'
 require 'json'
 require 'pry'
 
-require_relative './api_communicator'
-require_relative './source'
-require_relative './everything'
-require_relative './exception'
+
 
 class News
   VERSION = 'v2'
