@@ -30,6 +30,18 @@ end
 ### Methods
 
 def welcome
+  puts "\n\n"
+  puts "ooooooooooo                      oooo
+88  888  88 ooooooooo8  ooooooo   888ooooo
+    888    888oooooo8 888     888 888   888
+    888    888        888         888   888
+   o888o     88oooo888  88ooo888 o888o o888o
+
+oooo   oooo
+ 8888o  88  ooooooooo8 oooo  o  oooo oooooooo8
+ 88 888o88 888oooooo8   888 888 888 888ooooooo
+ 88   8888 888           888888888          888
+o88o    88   88oooo888    88   88   88oooooo88  "
   puts "\nWelcome to the Tech News App\n\nPlease tell us your first and last name:"
   gets.chomp
 end
