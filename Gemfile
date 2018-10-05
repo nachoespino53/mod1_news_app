@@ -5,6 +5,7 @@ gem "sinatra-activerecord"
 gem "sqlite3"
 gem "pry"
 gem "require_all"
+gem "rspec"
 gem 'news-api'
 gem 'launchy'
 gem 'rspec'
