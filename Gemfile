@@ -7,3 +7,4 @@ gem "pry"
 gem "require_all"
 gem 'news-api'
 gem 'launchy'
+gem 'rspec'
