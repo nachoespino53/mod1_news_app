@@ -75,6 +75,7 @@ def saved_articles(user)
       break
     elsif response.downcase.split[0] == "delete" && response.downcase.split[1].to_i != 0
       delete_guardado(user_articles[response.downcase.split[1].to_i - 1].id, user.id)
+      user.reload
     else
       puts "Your input was invalid"
     end
@@ -110,6 +111,7 @@ def topics(user)
       break
     elsif response.downcase.split[0] == "save" && response.downcase.split[1].to_i != 0
       save_article(articles[response.downcase.split[1].to_i - 1].id, user.id)
+      user.reload
     else
       puts "Your input was invalid"
     end
@@ -138,5 +140,4 @@ def store_or_get_name(response)
   user = User.find_by(first_name: response[0].capitalize, last_name: response[1].capitalize)
   user ? (return user) : (User.create(first_name: response[0].capitalize, last_name: response[1].capitalize))
 end
-# binding.pry
 run
