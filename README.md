@@ -52,5 +52,3 @@ Want to be able to save that article for later
 ### Saves
 
 - A method that returns all users saved articles
-
-Hello
